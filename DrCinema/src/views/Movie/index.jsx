@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-class Cinemas extends React.Component {
+class Movie extends React.Component {
   render() {
     return (
       <View>
         <Text>
-          Cinemas
+          Movie Details
         </Text>
       </View>
     );
   }
 }
 
-export default Cinemas;
+export default Movie;
