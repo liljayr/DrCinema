@@ -1,32 +1,47 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getMovies, getUpcomingMovies, getCinemas } from '../../services/APIServices';
-import { initializeMovies } from '../../actions/movieActions';
+import CinemaList from '../../components/CinemaList';
+import { getCinemas } from '../../services/APIServices';
+import InitializeCinemas from '../../actions/cinemaActions';
 
 class Cinemas extends React.Component {
   async componentDidMount() {
-    const { initializeMovieState } = this.props;
-    const movies = await getMovies();
-    console.log(initializeMovieState(movies));
+    const { initializeCinemasState, cinemas } = this.props;
+    if (cinemas.length < 1) {
+      initializeCinemasState(await getCinemas());
+    }
   }
 
+
   render() {
+    const {
+      cinemas,
+    } = this.props;
     return (
       <View>
-        <Text>
-          Cinemas
-        </Text>
+        <CinemaList
+          cinemas={cinemas}
+        />
       </View>
     );
   }
 }
 
 Cinemas.propTypes = {
-  initializeMovieState: PropTypes.func.isRequired,
+  initializeCinemasState: PropTypes.func.isRequired,
+  cinemas: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    website: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
-export default connect(null, {
-  initializeMovieState: initializeMovies,
+const mapStateToProps = (state) => ({
+  cinemas: state.cinemas,
+});
+
+export default connect(mapStateToProps, {
+  initializeCinemasState: InitializeCinemas,
 })(Cinemas);

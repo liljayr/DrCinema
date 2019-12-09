@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, FlatList } from 'react-native';
-import { connect } from 'react-redux';
 import ListItem from '../CinemaItem/index';
 
 const CinemaList = ({
@@ -22,6 +21,7 @@ const CinemaList = ({
           website={website}
         />
       )}
+      keyExtractor={(cinema) => cinema.id.toString()}
     />
   </View>
 );
@@ -34,4 +34,4 @@ CinemaList.propTypes = {
   })).isRequired,
 };
 
-export default connect(mapStateToProps)(CinemaList);
+export default CinemaList;
