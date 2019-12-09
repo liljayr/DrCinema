@@ -1,0 +1,3 @@
+export const INCREMENT = 'INCREMENT';
+export const GET_ALL_MOVIES = 'GET_ALL_MOVIES';
+export const INITIALIZE_MOVIES = 'INITIALIZE_MOVIES';
