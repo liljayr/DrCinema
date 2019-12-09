@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { withNavigation } from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 import {
   View, Text, TouchableOpacity,
 } from 'react-native';
