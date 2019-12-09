@@ -16,7 +16,7 @@ const MovieItem = ({
   navigation: { navigate },
 }) => (
   <TouchableOpacity
-    onPress={() => navigate('CinemaDetails', { selectedMovieId: id })}
+    onPress={() => navigate('MovieDetails', { selectedMovieId: id })}
   >
     <View>
       <Image source={{ uri: thumbnail }} />
