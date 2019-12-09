@@ -7,8 +7,8 @@ import reducers from './src/reducers';
 
 export default function App() {
   return (
-  // <Provider store={createStore(reducers)}>
-    <AppContainer />
-  // </Provider>
+    <Provider store={createStore(reducers)}>
+      <AppContainer />
+    </Provider>
   );
 }
