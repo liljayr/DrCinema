@@ -17,11 +17,8 @@ const ShowTimes = ({
         },
       }) => (
         <ListItem
-          id={id}
-          name={name}
-          thumbnail={thumbnail}
-          year={year}
-          genre={genre}
+          time={time}
+          ticketURL={ticketURL}
         />
       )}
     />
