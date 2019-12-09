@@ -5,7 +5,6 @@ import {
   View, Text, TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
-// import { connect } from 'react-redux';
 
 const CinemaItem = ({
   id,
@@ -14,12 +13,11 @@ const CinemaItem = ({
   navigation: { navigate },
 }) => (
   <TouchableOpacity
-    onPress={() => navigate('CinemaDetails', { selectedCinemaId: id })}
+    onPress={() => navigate('Cinema', { selectedCinemaId: id })}
   >
     <View>
       <Text style={styles.title}>{name}</Text>
       <Text style={styles.web}>{website}</Text>
-      {' '}
 //would be better to use hyperlink
     </View>
   </TouchableOpacity>
@@ -34,4 +32,4 @@ CinemaItem.propTypes = {
   }).isRequired,
 };
 
-export default CinemaItem;
+export default withNavigation(CinemaItem);
