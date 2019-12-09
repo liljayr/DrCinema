@@ -13,12 +13,11 @@ const CinemaItem = ({
   navigation: { navigate },
 }) => (
   <TouchableOpacity
-    onPress={() => navigate('Cinema', { selectedCinemaId: id })}
+    onPress={() => navigate('Cinema', { cinemaId: id })}
   >
     <View>
       <Text style={styles.title}>{name}</Text>
       <Text style={styles.web}>{website}</Text>
-//would be better to use hyperlink
     </View>
   </TouchableOpacity>
 );
