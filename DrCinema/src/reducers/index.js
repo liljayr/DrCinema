@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import movies from './movieReducer';
+import movies from './movieReducers';
 import cinemas from './cinemaReducers';
 import upcoming from './upcomingReducer';
 
