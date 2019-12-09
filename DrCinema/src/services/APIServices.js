@@ -41,7 +41,7 @@ export const getUpcomingMovies = async () => {
         image: data[i].poster,
         releaseDate: data[i]['release-dateIS'],
       };
-      results.push(JSON.stringify(movie));
+      results.push(movie);
     }
     return results;
   } catch (error) {
@@ -55,16 +55,16 @@ export const getCinemas = async () => {
     const { data } = await axios.get(url, { headers: { 'x-access-token': token } });
     const results = [];
     for (let i = 0; i < data.length; i += 1) {
-      const movie = {
+      const cinema = {
         id: data[i].id,
         name: data[i].name,
         description: data[i].description,
-        address: data[i].address,
+        address: data[i]['address\t'],
         city: data[i].city,
         phone: data[i].phone,
         website: data[i].website,
       };
-      results.push(JSON.stringify(movie));
+      results.push(cinema);
     }
     return results;
   } catch (error) {
