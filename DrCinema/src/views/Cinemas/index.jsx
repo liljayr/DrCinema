@@ -1,11 +1,15 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getMovies, getUpcomingMovies, getCinemas } from '../../services/APIServices';
+import { initializeMovies } from '../../actions/movieActions';
 
 class Cinemas extends React.Component {
   async componentDidMount() {
-    const response = await getCinemas();
-    console.log(response);
+    const { initializeMovieState } = this.props;
+    const movies = await getMovies();
+    console.log(initializeMovieState(movies));
   }
 
   render() {
@@ -19,4 +23,10 @@ class Cinemas extends React.Component {
   }
 }
 
-export default Cinemas;
+Cinemas.propTypes = {
+  initializeMovieState: PropTypes.func.isRequired,
+};
+
+export default connect(null, {
+  initializeMovieState: initializeMovies,
+})(Cinemas);

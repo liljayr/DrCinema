@@ -19,8 +19,9 @@ export const getMovies = async () => {
         duration: data[i].durationMinutes,
         yof: data[i].year,
         genres: data[i].genres,
+        showtimes: data[i].showtimes,
       };
-      results.push(JSON.stringify(movie));
+      results.push(movie);
     }
     return results;
   } catch (error) {
