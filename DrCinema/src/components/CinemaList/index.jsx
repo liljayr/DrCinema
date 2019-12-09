@@ -26,7 +26,7 @@ const CinemaList = ({
   </View>
 );
 
-ContactList.propTypes = {
+CinemaList.propTypes = {
   cinemas: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,

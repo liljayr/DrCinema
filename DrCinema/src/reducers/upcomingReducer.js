@@ -2,7 +2,7 @@ import * as constants from '../constants';
 
 export default function (state = [], action) {
   switch (action.type) {
-    case constants.INITIALIZE_MOVIES: return action.payload;
+    case constants.INITIALIZE_UPCOMING_MOVIES: return action.payload;
     default: return state;
   }
 }
