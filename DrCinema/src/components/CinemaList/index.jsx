@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, FlatList } from 'react-native';
-import ListItem from '../CinemaItem/index'
 import { connect } from 'react-redux';
+import ListItem from '../CinemaItem/index';
 
-const CinemaList =({
+const CinemaList = ({
   cinemas,
 }) => (
   <View>
@@ -32,6 +32,6 @@ ContactList.propTypes = {
     name: PropTypes.string.isRequired,
     website: PropTypes.string.isRequired,
   })).isRequired,
-}
+};
 
 export default connect(mapStateToProps)(CinemaList);
