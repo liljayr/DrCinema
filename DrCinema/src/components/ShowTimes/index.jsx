@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { View, FlatList } from 'react-native';
 import ListItem from '../MovieItem/index';
 
@@ -32,4 +31,4 @@ ShowTimes.propTypes = {
   })).isRequired,
 };
 
-export default connect(mapStateToProps)(ShowTimes);
+export default ShowTimes;

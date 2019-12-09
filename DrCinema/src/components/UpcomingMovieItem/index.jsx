@@ -8,9 +8,11 @@ import Hyperlink from 'react-native-hyperlink';
 import styles from './styles';
 // import { connect } from 'react-redux';
 
-const ShowTimeItem = ({
-  time,
-  ticketURL,
+const UpcomingItem = ({
+  id,
+  name,
+  thumbnail,
+  releaseDate,
 }) => (
   <View>
     <Text style={styles.title}>{time}</Text>
@@ -20,9 +22,11 @@ const ShowTimeItem = ({
   </View>
 );
 
-ShowTimeItem.propTypes = {
-  time: PropTypes.string.isRequired,
-  ticketURL: PropTypes.string.isRequired,
+UpcomingItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
 };
 
-export default ShowTimeItem;
+export default UpcomingItem;
