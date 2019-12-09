@@ -2,36 +2,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import { withNavigation } from 'react-navigation';
 import {
-  View, Text, TouchableOpacity,
+  View, Text, Image, TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
 // import { connect } from 'react-redux';
 
-const CinemaItem = ({
+const MovieItem = ({
   id,
   name,
-  website,
+  thumbnail,
+  year,
+  genre,
   navigation: { navigate },
 }) => (
   <TouchableOpacity
-    onPress={() => navigate('CinemaDetails', { selectedCinemaId: id })}
+    onPress={() => navigate('CinemaDetails', { selectedMovieId: id })}
   >
     <View>
+      <Image source={{ uri: thumbnail }} />
       <Text style={styles.title}>{name}</Text>
-      <Text style={styles.web}>{website}</Text>
+      <Text style={styles.subtitle}>{year}</Text>
+      <Text style={styles.subtitle}>{genre}</Text>
       {' '}
-//would be better to use hyperlink
     </View>
   </TouchableOpacity>
 );
 
-CinemaItem.propTypes = {
+MovieItem.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  website: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default CinemaItem;
+export default MovieItem;
