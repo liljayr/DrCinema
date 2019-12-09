@@ -4,7 +4,7 @@ import { withNavigation } from 'react-navigation';
 import {
   View, Text, Image, TouchableOpacity,
 } from 'react-native';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 const CinemaItem = ({
   id,
@@ -14,9 +14,12 @@ const CinemaItem = ({
 }) => (
   <TouchableOpacity
     onPress={() => navigate('CinemaDetails', { selectedCinemaId: id })}
+  >
     <View>
       <Text>{name}</Text>
-      <Text>{website}</Text> //would be better to use hyperlink
+      <Text>{website}</Text>
+      {' '}
+//would be better to use hyperlink
     </View>
   </TouchableOpacity>
 );
