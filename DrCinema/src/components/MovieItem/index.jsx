@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withNavigation } from 'react-navigation';
+// import { withNavigation } from 'react-navigation';
 import {
   View, Text, Image, TouchableOpacity,
 } from 'react-native';
+import styles from './styles';
 // import { connect } from 'react-redux';
 
 const MovieItem = ({
@@ -11,28 +12,31 @@ const MovieItem = ({
   name,
   thumbnail,
   year,
-  genre
+  genre,
   navigation: { navigate },
 }) => (
   <TouchableOpacity
     onPress={() => navigate('CinemaDetails', { selectedMovieId: id })}
   >
     <View>
-      <Text>{name}</Text>
-      <Text>{thumbnail}</Text>
-      <Text>{year}</Text>
-      <Text>{genre}</Text>
+      <Image source={{ uri: thumbnail }} />
+      <Text style={styles.title}>{name}</Text>
+      <Text style={styles.subtitle}>{year}</Text>
+      <Text style={styles.subtitle}>{genre}</Text>
       {' '}
     </View>
   </TouchableOpacity>
 );
 
-CinemaItem.propTypes = {
+MovieItem.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default CinemaItem;
+export default MovieItem;
