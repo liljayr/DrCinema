@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import CinemaDetails from '../../components/CinemaDetails';
 import MovieList from '../../components/MovieList';
+import initializeMovies from '../../actions/movieActions';
 
 class Cinema extends React.Component {
   constructor(props) {
@@ -22,7 +23,11 @@ class Cinema extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const { initializeMoviesState, movies } = this.props;
+    if (movies.lenght < 1) {
+      initializeMoviesState(await getMovies());
+    }
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
   // TODO: get Movies
   }
