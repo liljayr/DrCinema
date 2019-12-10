@@ -29,6 +29,9 @@ const MovieDetails = ({ movie }) => (
     <View>
       <Text>{movie.yearOfRelease}</Text>
     </View>
+    <View>
+      {movie.genre.map((genre) => <Text>{genre.name}</Text>)}
+    </View>
   </View>
 );
 
@@ -41,6 +44,9 @@ MovieDetails.propTypes = {
     plot: PropTypes.string.isRequired,
     duration: PropTypes.number.isRequired,
     yearOfRelease: PropTypes.number.isRequired,
+    genre: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    })).isRequired,
   }).isRequired,
 };
 export default MovieDetails;
