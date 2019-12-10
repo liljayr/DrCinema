@@ -14,7 +14,6 @@ class Cinemas extends React.Component {
     }
   }
 
-
   render() {
     const {
       cinemas,
