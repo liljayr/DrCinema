@@ -14,15 +14,22 @@ class Cinemas extends React.Component {
     }
   }
 
+  sortCinemas() {
+    const { cinemas } = this.props;
+    return cinemas.sort((a, b) => {
+      const x = a.name.toLowerCase();
+      const y = b.name.toLowerCase();
+      if (x < y) { return -1; }
+      if (x > y) { return 1; }
+      return 0;
+    });
+  }
 
   render() {
-    const {
-      cinemas,
-    } = this.props;
     return (
       <View>
         <CinemaList
-          cinemas={cinemas}
+          cinemas={this.sortCinemas()}
         />
       </View>
     );

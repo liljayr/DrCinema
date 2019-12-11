@@ -2,7 +2,7 @@ import * as axios from 'axios';
 
 let token = '';
 
-const baseURL = ' http://api.kvikmyndir.is/';
+const baseURL = 'http://api.kvikmyndir.is/';
 
 const getToken = async () => {
   const url = `${baseURL}authenticate`;
@@ -11,12 +11,12 @@ const getToken = async () => {
 };
 
 const connect = async (url) => {
-  const { data } = await axios.get(url, { headers: { 'x-access-token': token } });
-  if (data.length < 1) {
+  const response = await axios.get(url, { headers: { 'x-access-token': token } });
+  if (Object.prototype.hasOwnProperty.call(response, 'success')) {
     await getToken();
     return connect();
   }
-  return data;
+  return response.data;
 };
 
 export const getMovies = async () => {
