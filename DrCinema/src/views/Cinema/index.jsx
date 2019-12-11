@@ -27,8 +27,6 @@ class Cinema extends React.Component {
     if (movies.length < 1) {
       initializeMoviesState(await getMovies());
     }
-    console.log('movies');
-    console.log(movies);
     const { cinemas } = this.props;
     const { cinemaId } = this.state;
     const tempMovies = [];
@@ -39,8 +37,6 @@ class Cinema extends React.Component {
     }
     for (let i = 0; i < movies.length; i += i) {
       const { showtimes } = movies[i];
-      console.log('showtimes');
-      console.log(showtimes);
       for (let j = 0; j < showtimes.length; j += j) {
         const ID = showtimes[i].cinema.id;
         if (cinemaId === ID) {
@@ -49,8 +45,6 @@ class Cinema extends React.Component {
       }
     }
     this.setState({ cinemaMovies: tempMovies });
-    console.log('cinemamovies array');
-    console.log(this.state.cinemaMovies);
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
   // TODO: get Movies
   }
