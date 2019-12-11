@@ -8,25 +8,6 @@ import { getMovies } from '../../services/APIServices';
 import initializeMovies from '../../actions/movieActions';
 
 class Cinema extends React.Component {
-/*
-  constructor(props) {
-    super(props);
-    const { navigation } = this.props;
-    const cinemaId = navigation.getParam('cinemaId', -1);
-    this.state = {
-      cinemaId,
-      cinema: {
-        name: 'TempName',
-        description: 'TempDescription',
-        address: 'TempAddress',
-        phone: '111-1111',
-        website: 'TempWebsite.com',
-      },
-      movies: [],
-    };
-  }
-*/
-
   constructor(props) {
     super(props);
     const { navigation } = this.props;
@@ -34,6 +15,7 @@ class Cinema extends React.Component {
     this.state = {
       cinemaId,
       selectedCinema: {},
+      cinemaMovies: [],
     };
   }
 
@@ -47,19 +29,47 @@ class Cinema extends React.Component {
     }
     const { cinemas } = this.props;
     const { cinemaId } = this.state;
-    console.log(cinemaId);
+    const tempMovies = [];
     for (let i = 0; i < cinemas.length; i += 1) {
       if (cinemaId === cinemas[i].id) {
         this.setState({ selectedCinema: cinemas[i] });
       }
     }
+    for (let i = 0; i < movies.length; i += i) {
+      const { showtimes } = movies[i];
+      for (let j = 0; j < showtimes.length; j += j) {
+        const ID = showtimes[i].cinema.id;
+        console.log(ID);
+        if (cinemaId === ID) {
+          tempMovies.push(movies[i]);
+        }
+      }
+    }
+    this.setState({ cinemaMovies: tempMovies });
+    console.log(cinemaMovies);
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
   // TODO: get Movies
   }
 
+  /* getMovies() {
+    const { cinemaId } = this.state;
+    const { movies } = this.props;
+    for (let i = 0; i < movies.length; i += i) {
+      const showtimes = movies[i];
+      for (let j = 0; j < showtimes.length; j += j) {
+        const ID = showtimes[i].cinema.id;
+        console.log(ID);
+        if(cinemaId === ID)
+        // showtimes[j];
+      }
+      // let ID = movies[i]['showtimes'][]
+      // movies[i];
+    }
+  } */
+
   render() {
     const { selectedCinema } = this.state;
-    console.log(selectedCinema);
+    // this.getMovies();
     return (
       <View>
         <View>
