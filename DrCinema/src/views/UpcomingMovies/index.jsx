@@ -28,20 +28,18 @@ class UpcomingMovies extends React.Component {
     return upcoming.sort((a, b) => {
       const x = new Date(a.releaseDate);
       const y = new Date(b.releaseDate);
-      if (x > y) { return -1; }
-      if (x < y) { return 1; }
+      if (x > y) { return 1; }
+      if (x < y) { return -1; }
       return 0;
     });
   }
 
   render() {
-    const { upcoming } = this.props;
     const { isTrailerModalOpen, selectedMovieUrl } = this.state;
     return (
       <View>
         <UpcomingList
-          upcoming={upcoming}
-          sortUpcoming={this.sortUpcoming}
+          upcoming={this.sortUpcoming()}
           onOpenTrailer={
             (url) => this.setState({ selectedMovieUrl: url, isTrailerModalOpen: true })
           }

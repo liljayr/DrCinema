@@ -38,7 +38,6 @@ export const getMovies = async () => {
     }
     return results;
   } catch (error) {
-    console.log(error);
     return (error);
   }
 };

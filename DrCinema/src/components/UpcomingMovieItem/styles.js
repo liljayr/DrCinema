@@ -1,15 +1,29 @@
 import { StyleSheet } from 'react-native';
+import { fadedBaseColor } from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: fadedBaseColor,
+  },
+  trailerContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  textContainer: {
+    flex: 1,
   },
   title: {
-    marginLeft: 10,
-    marginRight: 10,
-    textAlign: 'center',
-    fontSize: 40,
+    textAlign: 'left',
+    fontSize: 15,
+  },
+  image: {
+    width: 150,
+    height: 150,
   },
   icon: {
     fontSize: 60,

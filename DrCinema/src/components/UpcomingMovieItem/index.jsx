@@ -16,12 +16,21 @@ const UpcomingItem = ({
   onOpenTrailer,
 }) => (
   <View style={styles.container}>
-    <Text style={styles.title}>{name}</Text>
-    <Image source={{ uri: thumbnail }} />
-    <Text>{releaseDate}</Text>
+    <Image
+      source={{ uri: thumbnail }}
+      style={styles.image}
+    />
+    <View style={styles.textContainer}>
+      <Text style={styles.title}>{name}</Text>
+      <Text>
+        Release Date:
+        {releaseDate}
+      </Text>
+    </View>
     <TouchableOpacity
       onPress={() => onOpenTrailer(trailer)}
       disabled={!hasTrailer}
+      style={[{ opacity: hasTrailer ? 1 : 0.5 }, styles.trailerContainer]}
     >
       <Entypo style={styles.icon} name="video" />
     </TouchableOpacity>
