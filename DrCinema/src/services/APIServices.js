@@ -13,10 +13,10 @@ const getToken = async () => {
 };
 
 const connect = async (url) => {
-  const response = await axios.get(url, { headers: { 'x-access-token': token } });
-  if (Object.prototype.hasOwnProperty.call(response, 'success')) {
+  let response = await axios.get(url, { headers: { 'x-access-token': token } });
+  if (Object.prototype.hasOwnProperty.call(response.data, 'success')) {
     await getToken();
-    return connect();
+    response = await axios.get(url, { headers: { 'x-access-token': token } });
   }
   return response.data;
 };
@@ -28,7 +28,7 @@ export const getMovies = async () => {
     const results = [];
     for (let i = 0; i < data.length; i += 1) {
       const movie = {
-        id: data[i]._id,
+        id: data[i].id,
         name: data[i].title,
         image: data[i].poster,
         plot: data[i].plot,
@@ -52,7 +52,7 @@ export const getUpcomingMovies = async () => {
     const results = [];
     for (let i = 0; i < data.length; i += 1) {
       const movie = {
-        id: data[i]._id,
+        id: data[i].id,
         name: data[i].title,
         image: data[i].poster,
         releaseDate: data[i]['release-dateIS'],
