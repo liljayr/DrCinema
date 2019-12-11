@@ -14,12 +14,23 @@ class UpcomingMovies extends React.Component {
     }
   }
 
-  render() {
+  sortUpcoming() {
     const { upcoming } = this.props;
+    return upcoming.sort((a, b) => {
+      const x = new Date(a.releaseDate);
+      const y = new Date(b.releaseDate);
+      if (x > y) { return -1; }
+      if (x < y) { return 1; }
+      return 0;
+    });
+  }
+
+  render() {
+    // const { upcoming } = this.props;
     return (
       <View>
         <UpcomingList
-          upcoming={upcoming}
+          upcoming={this.sortUpcoming}
         />
       </View>
     );
