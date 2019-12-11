@@ -27,7 +27,7 @@ export const getMovies = async () => {
       const movie = {
         id: data[i].id,
         name: data[i].title,
-        image: data[i].poster,
+        thumbnail: data[i].poster,
         plot: data[i].plot,
         duration: data[i].durationMinutes,
         yof: data[i].year,
