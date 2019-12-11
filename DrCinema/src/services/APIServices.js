@@ -13,7 +13,11 @@ const getToken = async () => {
 };
 
 const connect = async (url) => {
+  console.log('url');
+  console.log(url);
   let response = await axios.get(url, { headers: { 'x-access-token': token } });
+  console.log('response');
+  console.log(response);
   if (Object.prototype.hasOwnProperty.call(response.data, 'success')) {
     await getToken();
     response = await axios.get(url, { headers: { 'x-access-token': token } });
@@ -39,8 +43,11 @@ export const getMovies = async () => {
       };
       results.push(movie);
     }
+    console.log('worked!!!!');
     return results;
   } catch (error) {
+    console.log('error');
+    console.log(error);
     return (error);
   }
 };
