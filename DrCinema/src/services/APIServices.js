@@ -78,15 +78,21 @@ export const getCinemas = async () => {
     const data = await connect(url);
     const results = [];
     for (let i = 0; i < data.length; i += 1) {
+      let { description } = data[i];
+      if (description) {
+        const regex = /(<([^>]+)>)/ig;
+        description = description.replace(regex, '');
+      }
       const cinema = {
         id: data[i].id,
         name: data[i].name,
-        description: data[i].description,
+        description,
         address: data[i]['address\t'],
         city: data[i].city,
         phone: data[i].phone,
         website: data[i].website,
       };
+      console.log(cinema.description);
       results.push(cinema);
     }
     return results;

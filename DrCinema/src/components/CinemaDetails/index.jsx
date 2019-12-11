@@ -7,19 +7,19 @@ import styles from './styles';
 
 const CinemaDetails = ({ cinema }) => (
   <View>
-    <View>
+    <View style={styles.section}>
       <Text h1 style={styles.title}>{cinema.name}</Text>
     </View>
-    <View>
-      <Text h3 style={styles.title}>{cinema.description}</Text>
+    <View style={styles.section}>
+      <Text>{cinema.description}</Text>
     </View>
-    <View>
+    <View style={styles.section}>
       <Text>{cinema.address}</Text>
     </View>
-    <View>
+    <View style={styles.section}>
       <Text dataDetectorType="phoneNumber">{cinema.phone}</Text>
     </View>
-    <View>
+    <View style={styles.section}>
       <Text dataDetectorType="link">{cinema.website}</Text>
     </View>
   </View>
