@@ -35,6 +35,7 @@ class Cinema extends React.Component {
         this.setState({ selectedCinema: cinemas[i] });
       }
     }
+    // selectedBoards.filter((board) => board !== id),
     // console.log(this.state.selectedCinema.description);
     // const movies2 = this.props.movies;
     // console.log('movies');
