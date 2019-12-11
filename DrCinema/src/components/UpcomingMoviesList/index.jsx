@@ -22,6 +22,7 @@ const UpcomingMovieList = ({
           releaseDate={releaseDate}
         />
       )}
+      keyExtractor={(upcomingM) => upcomingM.id.toString()}
     />
   </View>
 );

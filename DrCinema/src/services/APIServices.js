@@ -1,6 +1,8 @@
 import * as axios from 'axios';
 
-let token = '';
+
+let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1ZGVjZGJjZWQ2MDJkMDc3OTYyOTVhM2QiLCJnbG9iYWxhZG1pbiI6ZmFsc2UsImFkbWluIjpmYWxzZSwiYWN0aXZlIjp0cnVlLCJmdWxsbmFtZSI6IlJ1bmFyIEJqYXJrYXNvbiIsImVtYWlsIjoicnVuYXIxNkBydS5pcyIsInVzZXJuYW1lIjoicnVuYXIxNiIsInBhc3N3b3JkIjoiJDJhJDA4JFREa1U1UmdlbEF2MmlnZGJxLmRJbWVoMW03L0RFbUhNRmdZc0hWdlgzeFBUL2dOTVpEeTRxIiwiZG9tYWluIjoicnUuaXMiLCJtZXNzYWdlIjoiRWR1Y2F0aW9uYWwgdXNlIGluIFJleWtqYXbDrWsgVW5pdmVyc2l0aXkiLCJpYXQiOjE1NzU4OTA5NzUsImV4cCI6MTU3NTk3NzM3NX0.HlNM5C49R_taetDlmpioCTDJSpTEbozW3Rd33TNMJUY';
+
 
 const baseURL = 'http://api.kvikmyndir.is/';
 
@@ -11,10 +13,10 @@ const getToken = async () => {
 };
 
 const connect = async (url) => {
-  const response = await axios.get(url, { headers: { 'x-access-token': token } });
-  if (Object.prototype.hasOwnProperty.call(response, 'success')) {
+  let response = await axios.get(url, { headers: { 'x-access-token': token } });
+  if (Object.prototype.hasOwnProperty.call(response.data, 'success')) {
     await getToken();
-    return connect();
+    response = await axios.get(url, { headers: { 'x-access-token': token } });
   }
   return response.data;
 };
@@ -26,7 +28,7 @@ export const getMovies = async () => {
     const results = [];
     for (let i = 0; i < data.length; i += 1) {
       const movie = {
-        id: data[i]._id,
+        id: data[i].id,
         name: data[i].title,
         image: data[i].poster,
         plot: data[i].plot,
@@ -50,7 +52,7 @@ export const getUpcomingMovies = async () => {
     const results = [];
     for (let i = 0; i < data.length; i += 1) {
       const movie = {
-        id: data[i]._id,
+        id: data[i].id,
         name: data[i].title,
         image: data[i].poster,
         releaseDate: data[i]['release-dateIS'],
