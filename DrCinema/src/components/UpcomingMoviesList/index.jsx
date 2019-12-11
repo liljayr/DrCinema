@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, FlatList } from 'react-native';
-import ListItem from '../CinemaItem/index';
+import ListItem from '../UpcomingMovieItem/index';
 
 const UpcomingMovieList = ({
   upcoming,

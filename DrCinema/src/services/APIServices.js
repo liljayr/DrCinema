@@ -54,7 +54,7 @@ export const getUpcomingMovies = async () => {
       const movie = {
         id: data[i].id,
         name: data[i].title,
-        image: data[i].poster,
+        thumbnail: data[i].poster,
         releaseDate: data[i]['release-dateIS'],
       };
       results.push(movie);
