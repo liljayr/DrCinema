@@ -13,10 +13,10 @@ const getToken = async () => {
 };
 
 const connect = async (url) => {
-  const response = await axios.get(url, { headers: { 'x-access-token': token } });
-  if (Object.prototype.hasOwnProperty.call(response, 'success')) {
+  let response = await axios.get(url, { headers: { 'x-access-token': token } });
+  if (Object.prototype.hasOwnProperty.call(response.data, 'success')) {
     await getToken();
-    return connect();
+    response = await axios.get(url, { headers: { 'x-access-token': token } });
   }
   return response.data;
 };

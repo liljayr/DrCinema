@@ -15,10 +15,11 @@ class UpcomingMovies extends React.Component {
   }
 
   render() {
+    const { upcoming } = this.props;
     return (
       <View>
         <UpcomingList
-          upcoming
+          upcoming={upcoming}
         />
       </View>
     );
@@ -36,7 +37,7 @@ UpcomingMovies.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  cinemas: state.cinemas,
+  upcoming: state.upcoming,
 });
 
 export default connect(mapStateToProps, {
