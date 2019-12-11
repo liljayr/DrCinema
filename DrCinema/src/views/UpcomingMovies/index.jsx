@@ -31,7 +31,7 @@ UpcomingMovies.propTypes = {
   upcoming: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
   })).isRequired,
 };
