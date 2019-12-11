@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CinemaDetails from '../../components/CinemaDetails';
 import MovieList from '../../components/MovieList';
+import { getMovies } from '../../services/APIServices';
 import initializeMovies from '../../actions/movieActions';
 
 class Cinema extends React.Component {
@@ -25,7 +27,7 @@ class Cinema extends React.Component {
 
   async componentDidMount() {
     const { initializeMoviesState, movies } = this.props;
-    if (movies.lenght < 1) {
+    if (movies.length < 1) {
       initializeMoviesState(await getMovies());
     }
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
@@ -54,9 +56,22 @@ class Cinema extends React.Component {
 }
 
 Cinema.propTypes = {
+  initializeMoviesState: PropTypes.func.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    website: PropTypes.string.isRequired,
+  })).isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
     getParam: PropTypes.func.isRequired,
   }).isRequired,
 };
-export default Cinema;
+
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+});
+
+export default connect(mapStateToProps, {
+  initializeMoviesState: initializeMovies,
+})(Cinema);
