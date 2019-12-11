@@ -8,6 +8,7 @@ import { getMovies } from '../../services/APIServices';
 import initializeMovies from '../../actions/movieActions';
 
 class Cinema extends React.Component {
+/*
   constructor(props) {
     super(props);
     const { navigation } = this.props;
@@ -24,31 +25,53 @@ class Cinema extends React.Component {
       movies: [],
     };
   }
+*/
+
+  constructor(props) {
+    super(props);
+    const { navigation } = this.props;
+    const cinemaId = navigation.getParam('cinemaId', -1);
+    this.state = {
+      cinemaId,
+      selectedCinema: {},
+    };
+  }
 
   async componentDidMount() {
-    const { initializeMoviesState, movies } = this.props;
+    const {
+      initializeMoviesState,
+      movies,
+    } = this.props;
     if (movies.length < 1) {
       initializeMoviesState(await getMovies());
+    }
+    const { cinemas } = this.props;
+    const { cinemaId } = this.state;
+    console.log(cinemaId);
+    for (let i = 0; i < cinemas.length; i += 1) {
+      if (cinemaId === cinemas[i].id) {
+        this.setState({ selectedCinema: cinemas[i] });
+      }
     }
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
   // TODO: get Movies
   }
 
   render() {
-    const { cinema, movies } = this.state;
+    const { selectedCinema } = this.state;
+    console.log(selectedCinema);
     return (
       <View>
         <View>
           <Text>
             Cinema Details
           </Text>
-          <CinemaDetails cinema={cinema} />
+          <CinemaDetails cinema={selectedCinema} />
         </View>
         <View>
           <Text>
             List Of Movies Showing
           </Text>
-          <MovieList movies={movies} />
         </View>
       </View>
     );
@@ -57,10 +80,23 @@ class Cinema extends React.Component {
 
 Cinema.propTypes = {
   initializeMoviesState: PropTypes.func.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.shape({
+  cinemas: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     website: PropTypes.string.isRequired,
+  })).isRequired,
+  cinema: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    website: PropTypes.string.isRequired,
+  }).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
   })).isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
@@ -69,6 +105,7 @@ Cinema.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  cinemas: state.cinemas,
   movies: state.movies,
 });
 
