@@ -38,7 +38,6 @@ export const getMovies = async () => {
     }
     return results;
   } catch (error) {
-    console.log(error);
     return (error);
   }
 };
@@ -67,6 +66,7 @@ export const getUpcomingMovies = async () => {
       };
       results.push(movie);
     }
+    console.log(results);
     return results;
   } catch (error) {
     return (error);
