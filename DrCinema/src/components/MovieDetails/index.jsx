@@ -1,6 +1,6 @@
 import React from 'react';
 // import { withNavigation } from 'react-navigation';
-import { View, Image } from 'react-native';
+import { View, Image, FlatList } from 'react-native';
 import { Text } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import styles from './styles';
@@ -32,10 +32,13 @@ const MovieDetails = ({ movie }) => (
     <View>
       {movie.genre.map((genre) => <Text>{genre.name}</Text>)}
     </View>
+    <View>
+      <FlatList>
+        data={movie.showtimes}
+      </FlatList>
+    </View>
   </View>
 );
-
-// TODO: Genres
 
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
@@ -46,6 +49,16 @@ MovieDetails.propTypes = {
     yearOfRelease: PropTypes.number.isRequired,
     genre: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
+    })).isRequired,
+    showtimes: PropTypes.arrayOf(PropTypes.shape({
+      cinema: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      }).isRequired,
+      showtimes: PropTypes.arrayOf(PropTypes.shape({
+        time: PropTypes.string.isRequired,
+        purchase_url: PropTypes.toString.isRequired,
+      })).isRequired,
     })).isRequired,
   }).isRequired,
 };
