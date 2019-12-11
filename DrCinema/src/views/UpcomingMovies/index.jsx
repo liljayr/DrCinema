@@ -64,6 +64,7 @@ UpcomingMovies.propTypes = {
     thumbnail: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
     trailer: PropTypes.string.isRequired,
+    hasTrailer: PropTypes.bool.isRequired,
   })).isRequired,
 };
 

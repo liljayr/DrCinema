@@ -13,7 +13,7 @@ const UpcomingMovieList = ({
       data={upcoming}
       renderItem={({
         item: {
-          id, name, thumbnail, releaseDate, trailer,
+          id, name, thumbnail, releaseDate, trailer, hasTrailer,
         },
       }) => (
         <ListItem
@@ -22,6 +22,7 @@ const UpcomingMovieList = ({
           thumbnail={thumbnail}
           releaseDate={releaseDate}
           trailer={trailer}
+          hasTrailer={hasTrailer}
           onOpenTrailer={onOpenTrailer}
         />
       )}
@@ -36,6 +37,7 @@ UpcomingMovieList.propTypes = {
     name: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
+    hasTrailer: PropTypes.bool.isRequired,
     trailer: PropTypes.string.isRequired,
   })).isRequired,
   onOpenTrailer: PropTypes.func.isRequired,

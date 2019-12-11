@@ -4,24 +4,26 @@ import PropTypes from 'prop-types';
 import {
   View, Text, Image, TouchableOpacity,
 } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
 import styles from './styles';
-// import { connect } from 'react-redux';
 
 const UpcomingItem = ({
   name,
   thumbnail,
   releaseDate,
   trailer,
+  hasTrailer,
   onOpenTrailer,
 }) => (
-  <View>
+  <View style={styles.container}>
     <Text style={styles.title}>{name}</Text>
     <Image source={{ uri: thumbnail }} />
     <Text>{releaseDate}</Text>
     <TouchableOpacity
       onPress={() => onOpenTrailer(trailer)}
+      disabled={!hasTrailer}
     >
-      <Text>{trailer}</Text>
+      <Entypo style={styles.icon} name="video" />
     </TouchableOpacity>
   </View>
 );
@@ -32,6 +34,7 @@ UpcomingItem.propTypes = {
   releaseDate: PropTypes.string.isRequired,
   trailer: PropTypes.string.isRequired,
   onOpenTrailer: PropTypes.func.isRequired,
+  hasTrailer: PropTypes.bool.isRequired,
 };
 
 export default UpcomingItem;

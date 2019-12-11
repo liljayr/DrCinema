@@ -64,6 +64,7 @@ export const getUpcomingMovies = async () => {
         name: data[i].title,
         thumbnail: data[i].poster,
         releaseDate: data[i]['release-dateIS'],
+        hasTrailer: trailer !== 'No trailer',
         trailer,
       };
       results.push(movie);
