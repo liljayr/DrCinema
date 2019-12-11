@@ -5,8 +5,17 @@ import PropTypes from 'prop-types';
 import UpcomingList from '../../components/UpcomingMoviesList';
 import { getUpcomingMovies } from '../../services/APIServices';
 import InitializeUpcoming from '../../actions/upcomingActions';
+import Trailer from '../../components/Trailer';
 
 class UpcomingMovies extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isTrailerModalOpen: false,
+      selectedMovieUrl: '',
+    };
+  }
+
   async componentDidMount() {
     const { initializeUpcomingState, upcoming } = this.props;
     if (upcoming.length < 1) {
@@ -26,11 +35,21 @@ class UpcomingMovies extends React.Component {
   }
 
   render() {
-    // const { upcoming } = this.props;
+    const { upcoming } = this.props;
+    const { isTrailerModalOpen, selectedMovieUrl } = this.state;
     return (
       <View>
         <UpcomingList
-          upcoming={this.sortUpcoming}
+          upcoming={upcoming}
+          sortUpcoming={this.sortUpcoming}
+          onOpenTrailer={
+            (url) => this.setState({ selectedMovieUrl: url, isTrailerModalOpen: true })
+          }
+        />
+        <Trailer
+          isOpen={isTrailerModalOpen}
+          closeModal={() => this.setState({ isTrailerModalOpen: false })}
+          url={selectedMovieUrl}
         />
       </View>
     );
@@ -44,6 +63,7 @@ UpcomingMovies.propTypes = {
     name: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
+    trailer: PropTypes.string.isRequired,
   })).isRequired,
 };
 

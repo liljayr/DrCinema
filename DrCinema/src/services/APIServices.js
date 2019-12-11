@@ -51,11 +51,20 @@ export const getUpcomingMovies = async () => {
     const data = await connect(url);
     const results = [];
     for (let i = 0; i < data.length; i += 1) {
+      let trailer = 'No trailer';
+      if (data[i].trailers.length > 0 && data[i].trailers[0].results.length > 0) {
+        for (let j = 0; j < data[i].trailers[0].results.length; j += 1) {
+          if (data[i].trailers[0].results[j].type === 'Trailer') {
+            trailer = data[i].trailers[0].results[j].url;
+          }
+        }
+      }
       const movie = {
         id: data[i].id,
         name: data[i].title,
         thumbnail: data[i].poster,
         releaseDate: data[i]['release-dateIS'],
+        trailer,
       };
       results.push(movie);
     }

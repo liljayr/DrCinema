@@ -5,6 +5,7 @@ import ListItem from '../UpcomingMovieItem/index';
 
 const UpcomingMovieList = ({
   upcoming,
+  onOpenTrailer,
 }) => (
   <View>
     <FlatList
@@ -12,7 +13,7 @@ const UpcomingMovieList = ({
       data={upcoming}
       renderItem={({
         item: {
-          id, name, thumbnail, releaseDate,
+          id, name, thumbnail, releaseDate, trailer,
         },
       }) => (
         <ListItem
@@ -20,6 +21,8 @@ const UpcomingMovieList = ({
           name={name}
           thumbnail={thumbnail}
           releaseDate={releaseDate}
+          trailer={trailer}
+          onOpenTrailer={onOpenTrailer}
         />
       )}
       keyExtractor={(upcomingM) => upcomingM.id.toString()}
@@ -33,7 +36,9 @@ UpcomingMovieList.propTypes = {
     name: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
+    trailer: PropTypes.string.isRequired,
   })).isRequired,
+  onOpenTrailer: PropTypes.func.isRequired,
 };
 
 export default UpcomingMovieList;
