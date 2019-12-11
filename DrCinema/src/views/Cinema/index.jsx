@@ -35,16 +35,26 @@ class Cinema extends React.Component {
         this.setState({ selectedCinema: cinemas[i] });
       }
     }
-    for (let i = 0; i < movies.length; i += i) {
-      const { showtimes } = movies[i];
+    // console.log(this.state.selectedCinema.description);
+    const movies2 = this.props.movies;
+    console.log('movies');
+    console.log(movies2);
+    console.log('length');
+    console.log(movies2.length);
+    for (let i = 0; i < movies2.length; i += i) {
+      const { showtimes } = movies2[i];
       for (let j = 0; j < showtimes.length; j += j) {
         const ID = showtimes[i].cinema.id;
+        console.log('ID');
+        console.log(ID);
         if (cinemaId === ID) {
-          tempMovies.push(movies[i]);
+          tempMovies.push(movies2[i]);
         }
       }
     }
     this.setState({ cinemaMovies: tempMovies });
+    console.log('MOVIES HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    console.log(this.state.cinemaMovies);
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
   // TODO: get Movies
   }
@@ -93,15 +103,6 @@ Cinema.propTypes = {
     name: PropTypes.string.isRequired,
     website: PropTypes.string.isRequired,
   })).isRequired,
-  cinema: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    website: PropTypes.string.isRequired,
-  }).isRequired,
   movies: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
