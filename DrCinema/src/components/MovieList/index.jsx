@@ -23,6 +23,7 @@ const MovieList = ({
           genre={genre}
         />
       )}
+      keyExtractor={(movie) => movie.id.toString()}
     />
   </View>
 );
