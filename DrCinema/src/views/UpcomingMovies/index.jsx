@@ -36,7 +36,7 @@ UpcomingMovies.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  cinemas: state.cinemas,
+  upcoming: state.upcoming,
 });
 
 export default connect(mapStateToProps, {
