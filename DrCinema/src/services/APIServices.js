@@ -66,7 +66,6 @@ export const getUpcomingMovies = async () => {
       };
       results.push(movie);
     }
-    console.log(results);
     return results;
   } catch (error) {
     return (error);

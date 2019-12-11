@@ -36,25 +36,25 @@ class Cinema extends React.Component {
       }
     }
     // console.log(this.state.selectedCinema.description);
-    const movies2 = this.props.movies;
-    console.log('movies');
-    console.log(movies2);
-    console.log('length');
-    console.log(movies2.length);
-    for (let i = 0; i < movies2.length; i += i) {
-      const { showtimes } = movies2[i];
-      for (let j = 0; j < showtimes.length; j += j) {
-        const ID = showtimes[i].cinema.id;
-        console.log('ID');
-        console.log(ID);
-        if (cinemaId === ID) {
-          tempMovies.push(movies2[i]);
-        }
-      }
-    }
-    this.setState({ cinemaMovies: tempMovies });
-    console.log('MOVIES HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    console.log(this.state.cinemaMovies);
+    // const movies2 = this.props.movies;
+    // console.log('movies');
+    // console.log(movies2);
+    // console.log('length');
+    // console.log(movies2.length);
+    // for (let i = 0; i < movies2.length; i += i) {
+    //   const { showtimes } = movies2[i];
+    //   for (let j = 0; j < showtimes.length; j += j) {
+    //     const ID = showtimes[i].cinema.id;
+    //     console.log('ID');
+    //     console.log(ID);
+    //     if (cinemaId === ID) {
+    //       tempMovies.push(movies2[i]);
+    //     }
+    //   }
+    // }
+    // this.setState({ cinemaMovies: tempMovies });
+    // console.log('MOVIES HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    // console.log(this.state.cinemaMovies);
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
   // TODO: get Movies
   }

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { fadedBaseColor } from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {
@@ -6,6 +7,7 @@ export default StyleSheet.create({
     justifyContent: 'space-evenly',
     marginTop: 10,
     marginBottom: 10,
+    backgroundColor: fadedBaseColor,
   },
   trailerContainer: {
     flex: 1,
