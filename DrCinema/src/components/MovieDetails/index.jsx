@@ -45,6 +45,7 @@ const MovieDetails = ({ movie, showtimes }) => (
         }) => (
           <DisplayShowtimes time={time} url={purchase_url} />
         )}
+        keyExtractor={(item) => item.purchase_url.toString()}
       />
     </View>
   </View>
@@ -60,14 +61,8 @@ MovieDetails.propTypes = {
     genres: PropTypes.string.isRequired,
   }).isRequired,
   showtimes: PropTypes.arrayOf(PropTypes.shape({
-    cinema: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-    schedule: PropTypes.arrayOf(PropTypes.shape({
-      time: PropTypes.string.isRequired,
-      purchase_url: PropTypes.toString.isRequired,
-    })).isRequired,
+    time: PropTypes.string.isRequired,
+    purchase_url: PropTypes.toString.isRequired,
   })).isRequired,
 };
 
