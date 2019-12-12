@@ -59,7 +59,7 @@ MovieDetails.propTypes = {
     duration: PropTypes.number.isRequired,
     yof: PropTypes.string.isRequired,
     genres: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   showtimes: PropTypes.arrayOf(PropTypes.shape({
     time: PropTypes.string.isRequired,
     purchase_url: PropTypes.toString.isRequired,
@@ -68,6 +68,14 @@ MovieDetails.propTypes = {
 
 MovieDetails.defaultProps = {
   showtimes: [],
+  movie: {
+    name: '',
+    thumbnail: '',
+    plot: '',
+    duration: 0,
+    yof: '',
+    genres: '',
+  },
 };
 
 function DisplayShowtimes({ time, url }) {
