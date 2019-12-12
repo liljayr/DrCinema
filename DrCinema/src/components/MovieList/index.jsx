@@ -12,7 +12,7 @@ const MovieList = ({
       data={movies}
       renderItem={({
         item: {
-          id, name, thumbnail, year, genre,
+          id, name, thumbnail, year, genres,
         },
       }) => (
         <ListItem
@@ -20,7 +20,7 @@ const MovieList = ({
           name={name}
           thumbnail={thumbnail}
           year={year}
-          genre={genre}
+          genres={genres}
         />
       )}
       keyExtractor={(movie) => movie.id.toString()}
@@ -34,7 +34,7 @@ MovieList.propTypes = {
     name: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
+    genres: PropTypes.string.isRequired,
   })).isRequired,
 };
 

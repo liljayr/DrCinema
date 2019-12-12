@@ -34,17 +34,19 @@ export const getMovies = async () => {
           }
         }
       }
-      const movie = {
-        id: data[i].id,
-        name: data[i].title,
-        thumbnail: data[i].poster,
-        plot: data[i].plot,
-        duration: data[i].durationMinutes,
-        yof: data[i].year,
-        genres,
-        showtimes: data[i].showtimes,
-      };
-      results.push(movie);
+      if (genres !== '' || typeof (data[i].showtimes.cinema) === 'object') {
+        const movie = {
+          id: data[i].id,
+          name: data[i].title,
+          thumbnail: data[i].poster,
+          plot: data[i].plot,
+          duration: data[i].durationMinutes,
+          yof: data[i].year,
+          genres,
+          showtimes: data[i].showtimes,
+        };
+        results.push(movie);
+      }
     }
     return results;
   } catch (error) {
