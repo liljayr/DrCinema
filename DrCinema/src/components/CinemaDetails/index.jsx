@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const CinemaDetails = ({ cinema }) => (
-  <View>
+  <View style={styles.container}>
     <View style={styles.section}>
       <Text h1 style={styles.title}>{cinema.name}</Text>
     </View>

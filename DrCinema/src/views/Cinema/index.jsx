@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CinemaDetails from '../../components/CinemaDetails';
@@ -36,8 +36,6 @@ class Cinema extends React.Component {
     }
     const movieList = await this.getTheseMovies();
     this.setState({ cinemaMovies: movieList });
-  // TODO: get Theater:  Name, Description, Complete address, Phone, Website
-  // TODO: get Movies
   }
 
   async getTheseMovies() {
@@ -57,20 +55,15 @@ class Cinema extends React.Component {
   render() {
     const { selectedCinema, cinemaMovies, cinemaId } = this.state;
     return (
-      <View>
+      <ScrollView>
         <View>
           <CinemaDetails cinema={selectedCinema} />
-        </View>
-        <View>
-          <Text>
-            List Of Movies Showing
-          </Text>
           <MovieList
             cinemaMovies={cinemaMovies}
             cinemaId={cinemaId}
           />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
