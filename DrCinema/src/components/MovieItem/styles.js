@@ -13,7 +13,8 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1,
-    marginTop: 40,
+    marginTop: 20,
+    marginBottom: 20,
     marginHorizontal: 10,
     flexDirection: 'row',
     marginLeft: 20,
