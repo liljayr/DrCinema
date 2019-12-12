@@ -6,11 +6,20 @@ export default StyleSheet.create({
     marginRight: 10,
     textAlign: 'center',
     fontSize: 40,
+    color: 'black',
+  },
+  text: {
+    textAlign: 'right',
   },
   section: {
     margin: 5,
   },
   container: {
     flexDirection: 'column',
+    borderBottomWidth: 5,
+    borderColor: 'steelblue',
+    padding: 10,
+    backgroundColor: 'whitesmoke',
+    color: 'white',
   },
 });
