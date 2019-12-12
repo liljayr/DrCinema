@@ -5,7 +5,7 @@ import { Text } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const MovieDetails = ({ movie, cinemaId }) => (
+const MovieDetails = ({ mo, cinemaId }) => (
   <View>
     <View>
       <Text h1 style={styles.title}>{movie.name}</Text>
@@ -30,7 +30,7 @@ const MovieDetails = ({ movie, cinemaId }) => (
       <Text>{movie.yearOfRelease}</Text>
     </View>
     <View>
-      {movie.genre.map((genre) => <Text>{genre.name}</Text>)}
+      <Text>movie.genre</Text>
     </View>
     <View>
       <FlatList
@@ -57,9 +57,7 @@ MovieDetails.propTypes = {
     plot: PropTypes.string.isRequired,
     duration: PropTypes.number.isRequired,
     yearOfRelease: PropTypes.number.isRequired,
-    genre: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    })).isRequired,
+    genre: PropTypes.string.isRequired,
     showtimes: PropTypes.arrayOf(PropTypes.shape({
       cinema: PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -72,6 +70,7 @@ MovieDetails.propTypes = {
     })).isRequired,
   }).isRequired,
 };
+
 export default MovieDetails;
 
 function DisplayShowtimes({ time, url }) {

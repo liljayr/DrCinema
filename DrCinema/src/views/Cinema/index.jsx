@@ -35,6 +35,7 @@ class Cinema extends React.Component {
       }
     }
     const movieList = await this.getTheseMovies();
+    this.setState({ cinemaMovies: movieList });
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
   // TODO: get Movies
   }
@@ -79,7 +80,8 @@ class Cinema extends React.Component {
   }
 
   render() {
-    const { selectedCinema } = this.state;
+    const { selectedCinema, cinemaMovies } = this.state;
+    console.log(cinemaMovies);
     return (
       <View>
         <View>
@@ -92,6 +94,7 @@ class Cinema extends React.Component {
           <Text>
             List Of Movies Showing
           </Text>
+          <MovieList movies={cinemaMovies} />
         </View>
       </View>
     );
