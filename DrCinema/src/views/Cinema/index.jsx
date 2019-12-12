@@ -81,15 +81,20 @@ class Cinema extends React.Component {
   }
 
   render() {
-    const { selectedCinema, cinemaMovies } = this.state;
-    console.log(cinemaMovies);
+    const { selectedCinema, cinemaMovies, cinemaId } = this.state;
     return (
       <View>
         <View>
           <CinemaDetails cinema={selectedCinema} />
         </View>
         <View>
-          <MovieList movies={cinemaMovies} />
+          <Text>
+            List Of Movies Showing
+          </Text>
+          <MovieList
+            cinemaMovies={cinemaMovies}
+            cinemaId={cinemaId}
+          />
         </View>
       </View>
     );
