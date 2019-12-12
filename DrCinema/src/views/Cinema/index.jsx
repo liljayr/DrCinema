@@ -58,7 +58,7 @@ class Cinema extends React.Component {
           name: tempMovie.name,
           thumbnail: tempMovie.thumbnail,
           yof: tempMovie.yof,
-          genre: tempMovie.genre,
+          genres: tempMovie.genres,
         };
         thisCinema[count] = movieObj;
         count += 1;

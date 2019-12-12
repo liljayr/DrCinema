@@ -5,7 +5,7 @@ import { Text } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const MovieDetails = ({ mo, cinemaId }) => (
+const MovieDetails = ({ movie, cinemaId }) => (
   <View>
     <View>
       <Text h1 style={styles.title}>{movie.name}</Text>
@@ -71,8 +71,6 @@ MovieDetails.propTypes = {
   }).isRequired,
 };
 
-export default MovieDetails;
-
 function DisplayShowtimes({ time, url }) {
   return (
     <View>
@@ -85,3 +83,5 @@ function DisplayShowtimes({ time, url }) {
     </View>
   );
 }
+
+export default MovieDetails;
