@@ -53,6 +53,16 @@ class Cinema extends React.Component {
       // tempMovies[count] = movies[i];
       if (tempArr) {
         const tempMovie = movies[i];
+        const genreArr = [];
+        // console.log('JJJJJJJJJJJJJJJJJJJJJ');
+        // console.log((movies[i].genres[0].Name));
+        /* for (let j = 0; j < movies[i].genres.length; j += 1) {
+          if (movies[i].genres[j].Name !== 'undefined') {
+            genreArr[j] = { name: movies[i].genres[j].Name };
+          }
+          // console.log(j.Name);
+          // movies[i].genres[j];
+        } */
         const movieObj = {
           id: tempMovie.id,
           name: tempMovie.name,
@@ -68,15 +78,6 @@ class Cinema extends React.Component {
       // thumbnail, name, release year (yof), genre
     }
     return thisCinema;
-  }
-
-  filterByShow(item) {
-    const { cinemaId } = this.state;
-    if (cinemaId === item.cinema.id) {
-      return true;
-    }
-
-    return false;
   }
 
   render() {
