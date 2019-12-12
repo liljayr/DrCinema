@@ -24,6 +24,12 @@ export const getMovies = async () => {
     const data = await connect(url);
     const results = [];
     for (let i = 0; i < data.length; i += 1) {
+      let { plot } = data[i];
+      if (plot) {
+        plot = plot.replace(/\s+/g, ' ').trim();
+      } else {
+        plot = '';
+      }
       let genres = '';
       const genreData = data[i].genres;
       for (let j = 0; j < genreData.length; j += 1) {
