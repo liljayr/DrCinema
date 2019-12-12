@@ -34,9 +34,7 @@ class Cinema extends React.Component {
         this.setState({ selectedCinema: cinemas[i] });
       }
     }
-    console.log("About to get 'these' movies");
     const movieList = await this.getTheseMovies();
-    console.log(movieList);
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
   // TODO: get Movies
   }
@@ -44,8 +42,6 @@ class Cinema extends React.Component {
   async getTheseMovies() {
     const { cinemaId } = this.state;
     const { movies } = this.props;
-    console.log('getTheseMovies() var movies:');
-    console.log(movies);
     const thisCinema = [];
     let tempArr = [];
     let count = 0;

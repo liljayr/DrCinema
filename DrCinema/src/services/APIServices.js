@@ -24,6 +24,16 @@ export const getMovies = async () => {
     const data = await connect(url);
     const results = [];
     for (let i = 0; i < data.length; i += 1) {
+      let genres = '';
+      const genreData = data[i].genres;
+      for (let j = 0; j < genreData.length; j += 1) {
+        if (typeof (genreData[j]) === 'object') {
+          genres += `${genreData[j].Name}`;
+          if (j < genreData.length - 1) {
+            genres += ', ';
+          }
+        }
+      }
       const movie = {
         id: data[i].id,
         name: data[i].title,
@@ -31,7 +41,7 @@ export const getMovies = async () => {
         plot: data[i].plot,
         duration: data[i].durationMinutes,
         yof: data[i].year,
-        genres: data[i].genres,
+        genres,
         showtimes: data[i].showtimes,
       };
       results.push(movie);
@@ -92,7 +102,6 @@ export const getCinemas = async () => {
         phone: data[i].phone,
         website: data[i].website,
       };
-      console.log(cinema.description);
       results.push(cinema);
     }
     return results;
