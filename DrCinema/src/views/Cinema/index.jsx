@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CinemaDetails from '../../components/CinemaDetails';
@@ -36,8 +36,6 @@ class Cinema extends React.Component {
     }
     const movieList = await this.getTheseMovies();
     this.setState({ cinemaMovies: movieList });
-  // TODO: get Theater:  Name, Description, Complete address, Phone, Website
-  // TODO: get Movies
   }
 
   async getTheseMovies() {
@@ -49,20 +47,8 @@ class Cinema extends React.Component {
     for (let i = 0; i < movies.length; i += 1) {
       const { showtimes } = movies[i];
       tempArr = showtimes.filter((show) => show.cinema.id === cinemaId);
-      // tempShows.push(tempArr);
-      // tempMovies[count] = movies[i];
       if (tempArr) {
         const tempMovie = movies[i];
-        const genreArr = [];
-        // console.log('JJJJJJJJJJJJJJJJJJJJJ');
-        // console.log((movies[i].genres[0].Name));
-        /* for (let j = 0; j < movies[i].genres.length; j += 1) {
-          if (movies[i].genres[j].Name !== 'undefined') {
-            genreArr[j] = { name: movies[i].genres[j].Name };
-          }
-          // console.log(j.Name);
-          // movies[i].genres[j];
-        } */
         const movieObj = {
           id: tempMovie.id,
           name: tempMovie.name,
@@ -73,9 +59,6 @@ class Cinema extends React.Component {
         thisCinema[count] = movieObj;
         count += 1;
       }
-      // let ID = movies[i]['showtimes'][]
-      // movies[i];
-      // thumbnail, name, release year (yof), genre
     }
     return thisCinema;
   }
@@ -83,23 +66,15 @@ class Cinema extends React.Component {
   render() {
     const { selectedCinema, cinemaMovies, cinemaId } = this.state;
     return (
-      <View>
+      <ScrollView>
         <View>
-          <Text>
-            Cinema Details
-          </Text>
           <CinemaDetails cinema={selectedCinema} />
-        </View>
-        <View>
-          <Text>
-            List Of Movies Showing
-          </Text>
           <MovieList
             cinemaMovies={cinemaMovies}
             cinemaId={cinemaId}
           />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
