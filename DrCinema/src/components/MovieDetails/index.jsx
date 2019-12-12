@@ -14,7 +14,7 @@ const MovieDetails = ({ movie, showtimes }) => (
       <Image
         style={styles.image}
         resizeMode="cover"
-        source={{ uri: movie.image }}
+        source={{ uri: movie.thumbnail }}
       />
     </View>
     <View>
@@ -43,7 +43,6 @@ const MovieDetails = ({ movie, showtimes }) => (
         }) => (
           <DisplayShowtimes time={time} url={purchase_url} />
         )}
-        keyExtractor={(time) => time.toString()}
       />
     </View>
   </View>
@@ -77,7 +76,7 @@ function DisplayShowtimes({ time, url }) {
         <Text>{time}</Text>
       </View>
       <View style={{ flex: 1 }}>
-        <Button title="Buy" onPress={() => Linking.openURL(url)} />
+        <Button title="Kaupa" onPress={() => Linking.openURL(url)} />
       </View>
     </View>
   );
