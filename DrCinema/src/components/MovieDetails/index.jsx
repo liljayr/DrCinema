@@ -29,7 +29,7 @@ const MovieDetails = ({ movie, showtimes }) => (
       </Text>
     </View>
     <View>
-      <Text>{movie.yearOfRelease}</Text>
+      <Text>{movie.yof}</Text>
     </View>
     <View>
       <Text>{movie.genres}</Text>
@@ -57,7 +57,7 @@ MovieDetails.propTypes = {
     thumbnail: PropTypes.string.isRequired,
     plot: PropTypes.string.isRequired,
     duration: PropTypes.number.isRequired,
-    yof: PropTypes.number.isRequired,
+    yof: PropTypes.string.isRequired,
     genres: PropTypes.string.isRequired,
   }).isRequired,
   showtimes: PropTypes.arrayOf(PropTypes.shape({
