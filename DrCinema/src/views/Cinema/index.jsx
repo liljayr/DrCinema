@@ -61,13 +61,13 @@ class Cinema extends React.Component {
         const genreArr = [];
         // console.log('JJJJJJJJJJJJJJJJJJJJJ');
         // console.log((movies[i].genres[0].Name));
-        for (let j = 0; j < movies[i].genres.length; j += 1) {
+        /* for (let j = 0; j < movies[i].genres.length; j += 1) {
           if (movies[i].genres[j].Name !== 'undefined') {
             genreArr[j] = { name: movies[i].genres[j].Name };
           }
           // console.log(j.Name);
           // movies[i].genres[j];
-        }
+        } */
         const movieObj = {
           id: tempMovie.id,
           name: tempMovie.name,
