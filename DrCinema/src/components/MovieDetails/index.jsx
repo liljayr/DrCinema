@@ -1,6 +1,8 @@
 import React from 'react';
 // import { withNavigation } from 'react-navigation';
-import { View, Image, FlatList, Linking } from 'react-native';
+import {
+  View, Image, FlatList, Linking,
+} from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import styles from './styles';
@@ -51,11 +53,11 @@ const MovieDetails = ({ movie, showtimes }) => (
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
     plot: PropTypes.string.isRequired,
     duration: PropTypes.number.isRequired,
     yearOfRelease: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
+    genres: PropTypes.string.isRequired,
   }).isRequired,
   showtimes: PropTypes.arrayOf(PropTypes.shape({
     cinema: PropTypes.shape({
