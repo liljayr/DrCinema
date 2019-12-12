@@ -20,4 +20,8 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
+  paragraph: {
+    textAlign: 'center',
+    margin: 5,
+  },
 });

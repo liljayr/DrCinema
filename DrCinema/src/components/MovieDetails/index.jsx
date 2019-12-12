@@ -20,7 +20,7 @@ const MovieDetails = ({ movie, showtimes }) => (
       />
     </View>
     <View>
-      <Text>{movie.plot}</Text>
+      <Text style={styles.paragraph}>{movie.plot}</Text>
     </View>
     <View>
       <Text>
@@ -53,12 +53,12 @@ const MovieDetails = ({ movie, showtimes }) => (
 
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    thumbnail: PropTypes.string.isRequired,
-    plot: PropTypes.string.isRequired,
-    duration: PropTypes.number.isRequired,
-    yof: PropTypes.string.isRequired,
-    genres: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    thumbnail: PropTypes.string,
+    plot: PropTypes.string,
+    duration: PropTypes.number,
+    yof: PropTypes.string,
+    genres: PropTypes.string,
   }),
   showtimes: PropTypes.arrayOf(PropTypes.shape({
     time: PropTypes.string.isRequired,
@@ -90,5 +90,10 @@ function DisplayShowtimes({ time, url }) {
     </View>
   );
 }
+
+DisplayShowtimes.propTypes = {
+  time: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};
 
 export default MovieDetails;
