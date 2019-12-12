@@ -30,7 +30,6 @@ class Movie extends React.Component {
       if (movies[i].id === movieId) {
         movie = movies[i];
         this.setState({ movie: movies[i] });
-        console.log(movie);
       }
     }
     for (let i = 0; i < movie.showtimes.length; i += 1) {

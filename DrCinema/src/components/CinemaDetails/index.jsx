@@ -1,5 +1,4 @@
 import React from 'react';
-// import { withNavigation } from 'react-navigation';
 import { View } from 'react-native';
 import { Text } from 'react-native-elements';
 import PropTypes from 'prop-types';
