@@ -1,7 +1,7 @@
 import React from 'react';
 // import { withNavigation } from 'react-navigation';
-import { View, Image, FlatList } from 'react-native';
-import { Text } from 'react-native-elements';
+import { View, Image, FlatList, Linking } from 'react-native';
+import { Text, Button } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
@@ -30,7 +30,7 @@ const MovieDetails = ({ movie, showtimes }) => (
       <Text>{movie.yearOfRelease}</Text>
     </View>
     <View>
-      <Text>movie.genre</Text>
+      <Text>{movie.genres}</Text>
     </View>
     <View>
       <FlatList
@@ -41,9 +41,9 @@ const MovieDetails = ({ movie, showtimes }) => (
             time, purchase_url,
           },
         }) => (
-          <DisplayShowtimes time={showtimes} url={purchase_url} />
+          <DisplayShowtimes time={time} url={purchase_url} />
         )}
-        keyExtractor={(list) => list.id.toString()}
+        keyExtractor={(time) => time.toString()}
       />
     </View>
   </View>
@@ -57,27 +57,27 @@ MovieDetails.propTypes = {
     duration: PropTypes.number.isRequired,
     yearOfRelease: PropTypes.number.isRequired,
     genre: PropTypes.string.isRequired,
-    showtimes: PropTypes.arrayOf(PropTypes.shape({
-      cinema: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-      }).isRequired,
-      schedule: PropTypes.arrayOf(PropTypes.shape({
-        time: PropTypes.string.isRequired,
-        purchase_url: PropTypes.toString.isRequired,
-      })).isRequired,
-    })).isRequired,
   }).isRequired,
+  showtimes: PropTypes.arrayOf(PropTypes.shape({
+    cinema: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    schedule: PropTypes.arrayOf(PropTypes.shape({
+      time: PropTypes.string.isRequired,
+      purchase_url: PropTypes.toString.isRequired,
+    })).isRequired,
+  })).isRequired,
 };
 
 function DisplayShowtimes({ time, url }) {
   return (
     <View>
-      <View>
+      <View style={{ flex: 1 }}>
         <Text>{time}</Text>
       </View>
-      <View>
-        <Text>{url}</Text>
+      <View style={{ flex: 1 }}>
+        <Button title="Buy" onPress={() => Linking.openURL(url)} />
       </View>
     </View>
   );

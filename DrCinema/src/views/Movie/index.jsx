@@ -8,8 +8,8 @@ class Movie extends React.Component {
   constructor(props) {
     super(props);
     const { navigation } = this.props;
-    const cinemaId = navigation.getParam('cinemaId', -1);
-    const movieId = navigation.getParam('movieId', -1);
+    const cinemaId = navigation.getParam('currentCinema', -1);
+    const movieId = navigation.getParam('selectedMovieId', -1);
     this.state = {
       cinemaId,
       movieId,
@@ -41,7 +41,7 @@ class Movie extends React.Component {
 
   render() {
     const { movie, showtimes } = this.state;
-    console.log(movie);
+    console.log(showtimes);
     return (
       <View>
         <Text>
@@ -49,7 +49,7 @@ class Movie extends React.Component {
         </Text>
         <MovieDetails
           movie={movie}
-          showtimes={showtimes}
+          showtimes={showtimes.schedule}
         />
       </View>
     );
