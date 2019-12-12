@@ -22,8 +22,7 @@ export default StyleSheet.create({
     marginRight: 10,
   },
   container: {
-    flex: 1,
-    marginBottom: 20,
+    margin: 10,
   },
   paragraph: {
     margin: 5,
