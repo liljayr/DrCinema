@@ -34,9 +34,11 @@ class Cinema extends React.Component {
         this.setState({ selectedCinema: cinemas[i] });
       }
     }
-    console.log("About to get 'these' movies");
+    // console.log("About to get 'these' movies");
     const movieList = await this.getTheseMovies();
-    console.log(movieList);
+    // console.log(movieList);
+    this.setState({ cinemaMovies: movieList });
+    // console.log(this.state.cinemaMovies.id);
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
   // TODO: get Movies
   }
@@ -44,8 +46,8 @@ class Cinema extends React.Component {
   async getTheseMovies() {
     const { cinemaId } = this.state;
     const { movies } = this.props;
-    console.log('getTheseMovies() var movies:');
-    console.log(movies);
+    // console.log('getTheseMovies() var movies:');
+    // console.log(movies);
     const thisCinema = [];
     let tempArr = [];
     let count = 0;
@@ -56,12 +58,22 @@ class Cinema extends React.Component {
       // tempMovies[count] = movies[i];
       if (tempArr) {
         const tempMovie = movies[i];
+        const genreArr = [];
+        // console.log('JJJJJJJJJJJJJJJJJJJJJ');
+        // console.log((movies[i].genres[0].Name));
+        for (let j = 0; j < movies[i].genres.length; j += 1) {
+          if (movies[i].genres[j].Name !== 'undefined') {
+            genreArr[j] = { name: movies[i].genres[j].Name };
+          }
+          // console.log(j.Name);
+          // movies[i].genres[j];
+        }
         const movieObj = {
           id: tempMovie.id,
           name: tempMovie.name,
           thumbnail: tempMovie.thumbnail,
           yof: tempMovie.yof,
-          genre: tempMovie.genre,
+          genres: genreArr,
         };
         thisCinema[count] = movieObj;
         count += 1;
@@ -73,17 +85,11 @@ class Cinema extends React.Component {
     return thisCinema;
   }
 
-  filterByShow(item) {
-    const { cinemaId } = this.state;
-    if (cinemaId === item.cinema.id) {
-      return true;
-    }
-
-    return false;
-  }
-
   render() {
-    const { selectedCinema } = this.state;
+    const { selectedCinema, cinemaMovies, cinemaId } = this.state;
+    console.log('KJDSHFJDSLHFKJSDHFLKDS');
+    console.log(cinemaMovies);
+    console.log(selectedCinema);
     return (
       <View>
         <View>
@@ -93,9 +99,7 @@ class Cinema extends React.Component {
           <CinemaDetails cinema={selectedCinema} />
         </View>
         <View>
-          <Text>
-            List Of Movies Showing
-          </Text>
+          <MovieList movies={cinemaMovies} cinemaId={cinemaId} />
         </View>
       </View>
     );
