@@ -14,13 +14,13 @@ const CinemaDetails = ({ cinema }) => (
       <Text>{cinema.description}</Text>
     </View>
     <View style={styles.section}>
-      <Text>{cinema.address}</Text>
+      <Text style={styles.text}>{cinema.address}</Text>
     </View>
     <View style={styles.section}>
-      <Text dataDetectorType="phoneNumber">{cinema.phone}</Text>
+      <Text dataDetectorType="phoneNumber" style={styles.text}>{cinema.phone}</Text>
     </View>
     <View style={styles.section}>
-      <Text dataDetectorType="link">{cinema.website}</Text>
+      <Text dataDetectorType="link" style={styles.text}>{cinema.website}</Text>
     </View>
   </View>
 );
