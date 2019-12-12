@@ -27,7 +27,7 @@ export default createAppContainer(createStackNavigator(
         <View style={styles.navContainer}>
           <NavButton
             onPress={() => { navigation.navigation.navigate('UpcomingMovies'); }}
-            title="Væntanlegt í bío"
+            title="Væntanlegt í bíó"
           />
           <NavButton
             onPress={() => { navigation.navigation.navigate('Cinemas'); }}
