@@ -9,7 +9,6 @@ const MovieList = ({
 }) => (
   <View>
     <FlatList
-      numColumns={2}
       data={cinemaMovies}
       renderItem={({
         item: {
@@ -20,7 +19,7 @@ const MovieList = ({
           id={id}
           name={name}
           thumbnail={thumbnail}
-          year={yof}
+          yof={yof}
           genres={genres}
           cinemaId={cinemaId}
         />

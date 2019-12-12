@@ -11,7 +11,7 @@ const MovieItem = ({
   id,
   name,
   thumbnail,
-  year,
+  yof,
   genres,
   cinemaId,
   navigation: { navigate },
@@ -19,11 +19,13 @@ const MovieItem = ({
   <TouchableOpacity
     onPress={() => navigate('Movie', { selectedMovieId: id, currentCinema: cinemaId })}
   >
-    <View>
-      <Image source={{ uri: thumbnail }} />
-      <Text style={styles.title}>{name}</Text>
-      <Text style={styles.subtitle}>{year}</Text>
-      <Text style={styles.subtitle}>{genres}</Text>
+    <View style={styles.container}>
+      <Image style={styles.image} source={{ uri: thumbnail }} />
+      <View style={styles.innerContainer}>
+        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.subtitle}>{yof}</Text>
+        <Text style={styles.subtitle}>{genres}</Text>
+      </View>
     </View>
   </TouchableOpacity>
 );
@@ -32,7 +34,7 @@ MovieItem.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
+  yof: PropTypes.string.isRequired,
   genres: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
