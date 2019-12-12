@@ -85,15 +85,9 @@ class Cinema extends React.Component {
     return (
       <View>
         <View>
-          <Text>
-            Cinema Details
-          </Text>
           <CinemaDetails cinema={selectedCinema} />
         </View>
         <View>
-          <Text>
-            List Of Movies Showing
-          </Text>
           <MovieList movies={cinemaMovies} />
         </View>
       </View>
