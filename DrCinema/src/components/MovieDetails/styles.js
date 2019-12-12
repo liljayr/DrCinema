@@ -10,6 +10,10 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontSize: 40,
   },
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   image: {
     width: winWidth * 0.60,
     height: winHeight * 0.45,
@@ -19,9 +23,9 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1,
+    marginBottom: 20,
   },
   paragraph: {
-    textAlign: 'center',
     margin: 5,
   },
 });

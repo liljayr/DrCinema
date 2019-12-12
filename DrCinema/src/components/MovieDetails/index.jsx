@@ -6,33 +6,32 @@ import {
 import { Text, Button } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import styles from './styles';
+import styles2 from '../../styles/index';
 
 const MovieDetails = ({ movie, showtimes }) => (
-  <View>
-    <View>
-      <Text h1 style={styles.title}>{movie.name}</Text>
-    </View>
-    <View>
-      <Image
-        style={styles.image}
-        resizeMode="cover"
-        source={{ uri: movie.thumbnail }}
-      />
-    </View>
-    <View>
-      <Text style={styles.paragraph}>{movie.plot}</Text>
-    </View>
-    <View>
-      <Text>
-        {movie.duration}
-        {' minutes'}
-      </Text>
-    </View>
-    <View>
-      <Text>{movie.yof}</Text>
-    </View>
-    <View>
-      <Text>{movie.genres}</Text>
+  <View style={styles2.container}>
+    <View styles={styles2.innerContainer}>
+      <View>
+        <Text h1 style={styles.title}>{movie.name}</Text>
+      </View>
+      <View style={styles.imageContainer}>
+        <Image
+          style={styles.image}
+          resizeMode="cover"
+          source={{ uri: movie.thumbnail }}
+        />
+      </View>
+      <View>
+        <Text style={styles.paragraph}>{movie.plot}</Text>
+      </View>
+      <View style={styles2.textContainer}>
+        <Text style={styles2.text}>
+          {movie.duration}
+          {' minutes'}
+        </Text>
+        <Text style={styles2.text}>{movie.yof}</Text>
+        <Text style={styles2.text}>{movie.genres}</Text>
+      </View>
     </View>
     <View>
       <FlatList
