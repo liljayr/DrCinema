@@ -8,8 +8,10 @@ class Movie extends React.Component {
   constructor(props) {
     super(props);
     const { navigation } = this.props;
+    const cinemaId = navigation.getParam('cinemaId', -1);
     const movieId = navigation.getParam('movieId', -1);
     this.state = {
+      cinemaId,
       movieId,
       movie: {
         title: 'tmpName',
@@ -41,4 +43,8 @@ Movie.propTypes = {
   }).isRequired,
 };
 
-export default Movie;
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+});
+
+export default connect(mapStateToProps, {})(Movie);
