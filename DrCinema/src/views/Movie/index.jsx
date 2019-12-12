@@ -41,6 +41,7 @@ class Movie extends React.Component {
 
   render() {
     const { movie, showtimes } = this.state;
+    console.log(movie);
     return (
       <View>
         <Text>

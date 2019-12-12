@@ -5,7 +5,7 @@ import { Text } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const MovieDetails = ({ movie, currentCinema }) => (
+const MovieDetails = ({ movie, showtimes }) => (
   <View>
     <View>
       <Text h1 style={styles.title}>{movie.name}</Text>
@@ -18,7 +18,7 @@ const MovieDetails = ({ movie, currentCinema }) => (
       />
     </View>
     <View>
-      <Text h3 style={styles.title}>{movie.plot}</Text>
+      <Text>{movie.plot}</Text>
     </View>
     <View>
       <Text>
@@ -35,10 +35,10 @@ const MovieDetails = ({ movie, currentCinema }) => (
     <View>
       <FlatList
         numColumns={1}
-        data={movie.showtimes.filter((item) => item.cinema.id === currentCinema)}
+        data={showtimes}
         renderItem={({
           item: {
-            showtimes, purchase_url,
+            time, purchase_url,
           },
         }) => (
           <DisplayShowtimes time={showtimes} url={purchase_url} />
@@ -50,7 +50,6 @@ const MovieDetails = ({ movie, currentCinema }) => (
 );
 
 MovieDetails.propTypes = {
-  currentCinema: PropTypes.number.isRequired,
   movie: PropTypes.shape({
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
