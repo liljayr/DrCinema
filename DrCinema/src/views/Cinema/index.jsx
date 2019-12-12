@@ -81,8 +81,7 @@ class Cinema extends React.Component {
   }
 
   render() {
-    const { selectedCinema, cinemaMovies } = this.state;
-    console.log(cinemaMovies);
+    const { selectedCinema, cinemaMovies, cinemaId } = this.state;
     return (
       <View>
         <View>
@@ -95,7 +94,10 @@ class Cinema extends React.Component {
           <Text>
             List Of Movies Showing
           </Text>
-          <MovieList movies={cinemaMovies} />
+          <MovieList
+            cinemaMovies={cinemaMovies}
+            cinemaId={cinemaId}
+          />
         </View>
       </View>
     );
