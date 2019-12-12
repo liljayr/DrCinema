@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MovieDetails from '../../components/MovieDetails';
@@ -42,15 +42,14 @@ class Movie extends React.Component {
   render() {
     const { movie, showtimes } = this.state;
     return (
-      <View>
-        <Text>
-          Movie Details
-        </Text>
-        <MovieDetails
-          movie={movie}
-          showtimes={showtimes.schedule}
-        />
-      </View>
+      <ScrollView>
+        <View>
+          <MovieDetails
+            movie={movie}
+            showtimes={showtimes.schedule}
+          />
+        </View>
+      </ScrollView>
     );
   }
 }
