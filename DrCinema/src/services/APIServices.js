@@ -24,17 +24,29 @@ export const getMovies = async () => {
     const data = await connect(url);
     const results = [];
     for (let i = 0; i < data.length; i += 1) {
-      const movie = {
-        id: data[i].id,
-        name: data[i].title,
-        thumbnail: data[i].poster,
-        plot: data[i].plot,
-        duration: data[i].durationMinutes,
-        yof: data[i].year,
-        genres: data[i].genres,
-        showtimes: data[i].showtimes,
-      };
-      results.push(movie);
+      let genres = '';
+      const genreData = data[i].genres;
+      for (let j = 0; j < genreData.length; j += 1) {
+        if (typeof (genreData[j]) === 'object') {
+          genres += `${genreData[j].Name}`;
+          if (j < genreData.length - 1) {
+            genres += ', ';
+          }
+        }
+      }
+      if (genres !== '' || typeof (data[i].showtimes.cinema) === 'object') {
+        const movie = {
+          id: data[i].id,
+          name: data[i].title,
+          thumbnail: data[i].poster,
+          plot: data[i].plot,
+          duration: data[i].durationMinutes,
+          yof: data[i].year,
+          genres,
+          showtimes: data[i].showtimes,
+        };
+        results.push(movie);
+      }
     }
     return results;
   } catch (error) {
@@ -92,7 +104,6 @@ export const getCinemas = async () => {
         phone: data[i].phone,
         website: data[i].website,
       };
-      console.log(cinema.description);
       results.push(cinema);
     }
     return results;

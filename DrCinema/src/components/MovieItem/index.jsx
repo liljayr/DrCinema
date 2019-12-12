@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { withNavigation } from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 import {
   View, Text, Image, TouchableOpacity,
 } from 'react-native';
@@ -12,7 +12,7 @@ const MovieItem = ({
   name,
   thumbnail,
   year,
-  genre,
+  genres,
   cinemaId,
   navigation: { navigate },
 }) => (
@@ -23,8 +23,7 @@ const MovieItem = ({
       <Image source={{ uri: thumbnail }} />
       <Text style={styles.title}>{name}</Text>
       <Text style={styles.subtitle}>{year}</Text>
-      <Text style={styles.subtitle}>{genre}</Text>
-      {' '}
+      <Text style={styles.subtitle}>{genres}</Text>
     </View>
   </TouchableOpacity>
 );
@@ -34,10 +33,10 @@ MovieItem.propTypes = {
   name: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
+  genres: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default MovieItem;
+export default withNavigation(MovieItem);

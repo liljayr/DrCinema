@@ -34,11 +34,16 @@ class Cinema extends React.Component {
         this.setState({ selectedCinema: cinemas[i] });
       }
     }
+<<<<<<< HEAD
     // console.log("About to get 'these' movies");
     const movieList = await this.getTheseMovies();
     // console.log(movieList);
     this.setState({ cinemaMovies: movieList });
     // console.log(this.state.cinemaMovies.id);
+=======
+    const movieList = await this.getTheseMovies();
+    this.setState({ cinemaMovies: movieList });
+>>>>>>> 01b72d437882dd5926d7667bfe754b8838050515
   // TODO: get Theater:  Name, Description, Complete address, Phone, Website
   // TODO: get Movies
   }
@@ -46,8 +51,11 @@ class Cinema extends React.Component {
   async getTheseMovies() {
     const { cinemaId } = this.state;
     const { movies } = this.props;
+<<<<<<< HEAD
     // console.log('getTheseMovies() var movies:');
     // console.log(movies);
+=======
+>>>>>>> 01b72d437882dd5926d7667bfe754b8838050515
     const thisCinema = [];
     let tempArr = [];
     let count = 0;
@@ -73,7 +81,11 @@ class Cinema extends React.Component {
           name: tempMovie.name,
           thumbnail: tempMovie.thumbnail,
           yof: tempMovie.yof,
+<<<<<<< HEAD
           genres: genreArr,
+=======
+          genres: tempMovie.genres,
+>>>>>>> 01b72d437882dd5926d7667bfe754b8838050515
         };
         thisCinema[count] = movieObj;
         count += 1;
@@ -86,10 +98,15 @@ class Cinema extends React.Component {
   }
 
   render() {
+<<<<<<< HEAD
     const { selectedCinema, cinemaMovies, cinemaId } = this.state;
     console.log('KJDSHFJDSLHFKJSDHFLKDS');
     console.log(cinemaMovies);
     console.log(selectedCinema);
+=======
+    const { selectedCinema, cinemaMovies } = this.state;
+    console.log(cinemaMovies);
+>>>>>>> 01b72d437882dd5926d7667bfe754b8838050515
     return (
       <View>
         <View>
@@ -99,7 +116,14 @@ class Cinema extends React.Component {
           <CinemaDetails cinema={selectedCinema} />
         </View>
         <View>
+<<<<<<< HEAD
           <MovieList movies={cinemaMovies} cinemaId={cinemaId} />
+=======
+          <Text>
+            List Of Movies Showing
+          </Text>
+          <MovieList movies={cinemaMovies} />
+>>>>>>> 01b72d437882dd5926d7667bfe754b8838050515
         </View>
       </View>
     );

@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import styles from './styles';
+import defaultStyles from '../../styles';
 
 const UpcomingItem = ({
   name,
@@ -15,7 +16,7 @@ const UpcomingItem = ({
   hasTrailer,
   onOpenTrailer,
 }) => (
-  <View style={styles.container}>
+  <View style={[defaultStyles.listContainer, { flexDirection: 'row' }]}>
     <Image
       source={{ uri: thumbnail }}
       style={styles.image}

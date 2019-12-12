@@ -5,6 +5,7 @@ import {
   View, Text, TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
+import defaultStyles from '../../styles';
 
 const CinemaItem = ({
   id,
@@ -15,7 +16,7 @@ const CinemaItem = ({
   <TouchableOpacity
     onPress={() => navigate('Cinema', { cinemaId: id })}
   >
-    <View>
+    <View style={defaultStyles.listContainer}>
       <Text style={styles.title}>{name}</Text>
       <Text style={styles.web}>{website}</Text>
     </View>

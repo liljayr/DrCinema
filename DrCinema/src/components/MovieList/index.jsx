@@ -36,9 +36,7 @@ MovieList.propTypes = {
     name: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
     yof: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    })).isRequired,
+    genres: PropTypes.string.isRequired,
   })).isRequired,
   cinemaId: PropTypes.number.isRequired,
 };

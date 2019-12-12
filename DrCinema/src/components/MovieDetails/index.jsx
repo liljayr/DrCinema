@@ -30,7 +30,7 @@ const MovieDetails = ({ movie, currentCinema }) => (
       <Text>{movie.yearOfRelease}</Text>
     </View>
     <View>
-      {movie.genre.map((genre) => <Text>{genre.name}</Text>)}
+      <Text>movie.genre</Text>
     </View>
     <View>
       <FlatList
@@ -57,9 +57,7 @@ MovieDetails.propTypes = {
     plot: PropTypes.string.isRequired,
     duration: PropTypes.number.isRequired,
     yearOfRelease: PropTypes.number.isRequired,
-    genre: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    })).isRequired,
+    genre: PropTypes.string.isRequired,
     showtimes: PropTypes.arrayOf(PropTypes.shape({
       cinema: PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -72,7 +70,6 @@ MovieDetails.propTypes = {
     })).isRequired,
   }).isRequired,
 };
-export default MovieDetails;
 
 function DisplayShowtimes({ time, url }) {
   return (
@@ -86,3 +83,5 @@ function DisplayShowtimes({ time, url }) {
     </View>
   );
 }
+
+export default MovieDetails;
