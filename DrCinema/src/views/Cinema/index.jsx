@@ -41,26 +41,15 @@ class Cinema extends React.Component {
   async getTheseMovies() {
     const { cinemaId } = this.state;
     const { movies } = this.props;
-    const thisCinema = [];
-    let tempArr = [];
-    let count = 0;
+    const results = [];
     for (let i = 0; i < movies.length; i += 1) {
-      const { showtimes } = movies[i];
-      tempArr = showtimes.filter((show) => show.cinema.id === cinemaId);
-      if (tempArr) {
-        const tempMovie = movies[i];
-        const movieObj = {
-          id: tempMovie.id,
-          name: tempMovie.name,
-          thumbnail: tempMovie.thumbnail,
-          yof: tempMovie.yof,
-          genres: tempMovie.genres,
-        };
-        thisCinema[count] = movieObj;
-        count += 1;
+      for (let j = 0; j < movies[i].showtimes.length; j += 1) {
+        if (movies[i].showtimes[j].cinema.id === cinemaId) {
+          results.push(movies[i]);
+        }
       }
     }
-    return thisCinema;
+    return results;
   }
 
   render() {
@@ -85,10 +74,16 @@ Cinema.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     website: PropTypes.string.isRequired,
+
   })).isRequired,
   movies: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
+    showtimes: PropTypes.arrayOf(PropTypes.shape({
+      cinema: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+      }).isRequired,
+    })).isRequired,
   })).isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,

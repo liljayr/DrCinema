@@ -48,7 +48,7 @@ class Movie extends React.Component {
         </Text>
         <MovieDetails
           movie={movie}
-          showtimes={showtimes}
+          showtimes={showtimes.schedule}
         />
       </View>
     );
