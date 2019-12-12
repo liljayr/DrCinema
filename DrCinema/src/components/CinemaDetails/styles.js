@@ -10,4 +10,7 @@ export default StyleSheet.create({
   section: {
     margin: 5,
   },
+  container: {
+    flexDirection: 'column',
+  },
 });

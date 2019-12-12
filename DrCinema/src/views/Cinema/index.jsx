@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CinemaDetails from '../../components/CinemaDetails';
@@ -36,67 +36,34 @@ class Cinema extends React.Component {
     }
     const movieList = await this.getTheseMovies();
     this.setState({ cinemaMovies: movieList });
-  // TODO: get Theater:  Name, Description, Complete address, Phone, Website
-  // TODO: get Movies
   }
 
   async getTheseMovies() {
     const { cinemaId } = this.state;
     const { movies } = this.props;
-    const thisCinema = [];
-    let tempArr = [];
-    let count = 0;
+    const results = [];
     for (let i = 0; i < movies.length; i += 1) {
-      const { showtimes } = movies[i];
-      tempArr = showtimes.filter((show) => show.cinema.id === cinemaId);
-      // tempShows.push(tempArr);
-      // tempMovies[count] = movies[i];
-      if (tempArr) {
-        const tempMovie = movies[i];
-        const genreArr = [];
-        // console.log('JJJJJJJJJJJJJJJJJJJJJ');
-        // console.log((movies[i].genres[0].Name));
-        /* for (let j = 0; j < movies[i].genres.length; j += 1) {
-          if (movies[i].genres[j].Name !== 'undefined') {
-            genreArr[j] = { name: movies[i].genres[j].Name };
-          }
-          // console.log(j.Name);
-          // movies[i].genres[j];
-        } */
-        const movieObj = {
-          id: tempMovie.id,
-          name: tempMovie.name,
-          thumbnail: tempMovie.thumbnail,
-          yof: tempMovie.yof,
-          genres: tempMovie.genres,
-        };
-        thisCinema[count] = movieObj;
-        count += 1;
+      for (let j = 0; j < movies[i].showtimes.length; j += 1) {
+        if (movies[i].showtimes[j].cinema.id === cinemaId) {
+          results.push(movies[i]);
+        }
       }
-      // let ID = movies[i]['showtimes'][]
-      // movies[i];
-      // thumbnail, name, release year (yof), genre
     }
-    return thisCinema;
+    return results;
   }
 
   render() {
     const { selectedCinema, cinemaMovies, cinemaId } = this.state;
     return (
-      <View>
+      <ScrollView>
         <View>
           <CinemaDetails cinema={selectedCinema} />
-        </View>
-        <View>
-          <Text>
-            List Of Movies Showing
-          </Text>
           <MovieList
             cinemaMovies={cinemaMovies}
             cinemaId={cinemaId}
           />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -107,10 +74,16 @@ Cinema.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     website: PropTypes.string.isRequired,
+
   })).isRequired,
   movies: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
+    showtimes: PropTypes.arrayOf(PropTypes.shape({
+      cinema: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+      }).isRequired,
+    })).isRequired,
   })).isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
