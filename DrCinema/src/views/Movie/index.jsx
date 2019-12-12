@@ -13,30 +13,52 @@ class Movie extends React.Component {
     this.state = {
       cinemaId,
       movieId,
-      movie: {
-        title: 'tmpName',
-      },
+      movie: {},
+      showtimes: [],
     };
   }
 
+  async componentDidMount() {
+    await this.findMovie();
+  }
+
+  async findMovie() {
+    const { movieId, cinemaId } = this.state;
+    const { movies } = this.props;
+    let movie = {};
+    for (let i = 0; i < movies.length; i += 1) {
+      if (movies[i].id === movieId) {
+        movie = movies[i];
+        this.setState({ movie: movies[i] });
+      }
+    }
+    for (let i = 0; i < movie.showtimes.length; i += 1) {
+      if (movie.showtimes[i].cinema.id === cinemaId) {
+        this.setState({ showtimes: movie.showtimes[i] });
+      }
+    }
+  }
+
   render() {
-    const { movie } = this.state;
+    const { movie, showtimes } = this.state;
     return (
       <View>
         <Text>
           Movie Details
         </Text>
-        <MovieDetails movie={movie} />
+        <MovieDetails
+          movie={movie}
+          showtimes={showtimes}
+        />
       </View>
     );
   }
 }
 
 Movie.propTypes = {
-  movie: PropTypes.shape({
+  movies: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
+  })).isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
     getParam: PropTypes.func.isRequired,
