@@ -4,23 +4,25 @@ import { View, FlatList } from 'react-native';
 import ListItem from '../MovieItem/index';
 
 const MovieList = ({
-  movies,
+  cinemaMovies,
+  cinemaId,
 }) => (
   <View>
     <FlatList
       numColumns={2}
-      data={movies}
+      data={cinemaMovies}
       renderItem={({
         item: {
-          id, name, thumbnail, year, genres,
+          id, name, thumbnail, yof, genres,
         },
       }) => (
         <ListItem
           id={id}
           name={name}
           thumbnail={thumbnail}
-          year={year}
+          year={yof}
           genres={genres}
+          cinemaId={cinemaId}
         />
       )}
       keyExtractor={(movie) => movie.id.toString()}
@@ -29,13 +31,14 @@ const MovieList = ({
 );
 
 MovieList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape({
+  cinemaMovies: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
+    yof: PropTypes.string.isRequired,
     genres: PropTypes.string.isRequired,
   })).isRequired,
+  cinemaId: PropTypes.number.isRequired,
 };
 
 export default MovieList;
