@@ -18,7 +18,7 @@ export default StyleSheet.create({
     marginRight: 10,
   },
   container: {
-    flex: 1,
+    margin: 10,
   },
   paragraph: {
     textAlign: 'center',

@@ -43,7 +43,11 @@ const MovieDetails = ({ movie, showtimes }) => (
             time, purchase_url,
           },
         }) => (
-          <DisplayShowtimes time={time} url={purchase_url} />
+          <View styleName="horizontal">
+            <View style={{ margin: 10 }}>
+              <Button title={time} onPress={() => Linking.openURL(purchase_url)} />
+            </View>
+          </View>
         )}
         keyExtractor={(item) => item.purchase_url.toString()}
       />
@@ -76,24 +80,6 @@ MovieDetails.defaultProps = {
     yof: '',
     genres: '',
   },
-};
-
-function DisplayShowtimes({ time, url }) {
-  return (
-    <View>
-      <View style={{ flex: 1 }}>
-        <Text>{time}</Text>
-      </View>
-      <View style={{ flex: 1 }}>
-        <Button title="Kaupa" onPress={() => Linking.openURL(url)} />
-      </View>
-    </View>
-  );
-}
-
-DisplayShowtimes.propTypes = {
-  time: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
 };
 
 export default MovieDetails;
